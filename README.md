@@ -6,6 +6,9 @@
 ### Prerequisites
 - [Node.js](https://nodejs.org/) installed on your machine.
 - (Optional) Install `nodemon` globally to automatically restart the server on code changes:
+- MongoDB must be installed locally.
+- The MongoDB server must be running
+- For optimal display, view at 125% zoom in Chrome.
 
 ```bash
 npm install -g nodemon
