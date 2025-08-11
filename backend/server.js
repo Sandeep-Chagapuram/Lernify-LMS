@@ -28,7 +28,7 @@ app.post("/signup", async (req, res) => {
     const { name, email, password, role } = req.body
     const user = new User({ name, email, password, role })
     const doc = await user.save()
-    
+
     res.json(doc)
 })
 
@@ -49,40 +49,40 @@ app.get('/getcourses', async (req, res) => {
     const courses = await Course.find().populate('instructor', 'name email');
     res.json(courses);
 });
-app.post('/getInstructorCourses',async(req,res)=>{
+app.post('/getInstructorCourses', async (req, res) => {
     let instructorId
-    if(req.body.id!=null || req.body.id!=undefined){
+    if (req.body.id != null || req.body.id != undefined) {
         instructorId = req.body.id
-    }else{
-        instructorId=req.body.user._id
+    } else {
+        instructorId = req.body.user._id
     }
     // console.log(`instructor is ${req.body.id} , ${req.body.user._id}`);
-    
-    const courses = await Course.find({instructor:instructorId})
+
+    const courses = await Course.find({ instructor: instructorId })
     res.json(courses)
 })
 
-app.post("/enroll/:courseId",async(req,res)=>{
+app.post("/enroll/:courseId", async (req, res) => {
     const courseId = req.params.courseId
     const userId = req.body.id
-    
+
     await Course.findByIdAndUpdate(
         courseId,
-        {$inc:{enrollments:1}}
+        { $inc: { enrollments: 1 } }
     )
-    const user = await User.findOne({_id:userId})
+    const user = await User.findOne({ _id: userId })
     user.enrolledCourses.push(courseId)
     await user.save()
     res.send("enrolled")
 })
 
-app.post("/deleteCourse",async(req,res)=>{
-    const {_id}=req.body
-    await Course.findByIdAndDelete({_id:_id})
+app.post("/deleteCourse", async (req, res) => {
+    const { _id } = req.body
+    await Course.findByIdAndDelete({ _id: _id })
     res.send("Deleted course")
 })
 
-app.post("/getUserDetails",async(req,res)=>{
+app.post("/getUserDetails", async (req, res) => {
     const userId = req.body.id
 
     const user = await User.findById(userId)

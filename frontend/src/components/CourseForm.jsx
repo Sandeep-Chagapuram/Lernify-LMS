@@ -23,11 +23,11 @@ export default function CourseForm() {
         lessons: [''],
         enrollments: 0
     })
-    useEffect(()=>{
-        if(_id){
-            setCourse({...course,instructor:_id})
+    useEffect(() => {
+        if (_id) {
+            setCourse({ ...course, instructor: _id })
         }
-    },[_id])
+    }, [_id])
     // console.log(course)
     const [lessonCount, setLessonCount] = useState(0)
     function handleChange(e) {

@@ -42,10 +42,11 @@ export default function Login() {
     }
 
     return <>
-            <form onSubmit={(e)=>{
+        <form onSubmit={(e) => {
             e.preventDefault()
-             handleClick()}}
-              className=" shadow-lg mt-14 bg-[#ebf2f989] rounded-xl flex flex-col items-center py-8 px-5 w-2/3 max-w-96 mx-auto ">
+            handleClick()
+        }}
+            className=" shadow-lg mt-14 bg-[#ebf2f989] rounded-xl flex flex-col items-center py-8 px-5 w-2/3 max-w-96 mx-auto ">
             <input required className="authInp" type="text" name="email" placeholder="Enter email" onChange={handleChange} />
 
             <input required className="authInp" type="password" name="password" placeholder="Enter password" onChange={handleChange} />

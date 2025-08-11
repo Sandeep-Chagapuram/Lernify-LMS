@@ -6,27 +6,27 @@ import Navbar from "./Navbar";
 export default function InstructorHome() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [_id,setId]= useState(null)
+  const [_id, setId] = useState(null)
   const user = location.state?.user;
   const id = location.state?.id;
-  console.log(`user ${user}, id ${id}`)
-  console.log(user)
+  // console.log(`user ${user}, id ${id}`)
+  // console.log(user)
 
   const [courses, setCourses] = useState([]);
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(()=>{
-    if(id!=undefined){
+  useEffect(() => {
+    if (id != undefined) {
       setId(id)
     }
-    else{
+    else {
       setId(user._id)
     }
-  },[])
+  }, [])
 
 
   async function getCourses() {
-    console.log(`id sending is ${_id}`)
+    // console.log(`id sending is ${_id}`)
     const res = await fetch("http://localhost:3000/getInstructorCourses", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ export default function InstructorHome() {
   }
 
   useEffect(() => {
-    if(_id){
+    if (_id) {
 
       getCourses();
     }
@@ -78,16 +78,16 @@ export default function InstructorHome() {
       <div className="mb-32">
         <h1 className="mx-5 mt-8 mb-3 text-xl font-semibold">Your courses</h1>
         <div className="bg-gray-100 mx-5 rounded-3xl p-5  flex gap-5 flex-wrap">
-        {
-            courses.length>0?courses.map((item) => (
-          <InstructorCourses
-            course={item}
-            getFunction={getCourses}
-            key={item._id}
-          />
-        )): <h1>You haven’t published any courses yet.</h1>
-        }
-      </div>
+          {
+            courses.length > 0 ? courses.map((item) => (
+              <InstructorCourses
+                course={item}
+                getFunction={getCourses}
+                key={item._id}
+              />
+            )) : <h1>You haven’t published any courses yet.</h1>
+          }
+        </div>
       </div>
     </>
   );

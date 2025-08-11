@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Login from './components/Login.jsx'
@@ -23,26 +23,26 @@ const router = createBrowserRouter([
         path: 'signup',
         element: <SignUp />
       },
-      
+
     ],
   },
   {
-    path:'/userHome',
-    element:<UserHome/>
+    path: '/userHome',
+    element: <UserHome />
   },
   {
-    path:'/instructorHome',
-    element:<InstructorHome/>,
-    children:[
+    path: '/instructorHome',
+    element: <InstructorHome />,
+    children: [
       {
-        path:'courseForm',
-        element:<CourseForm/>
+        path: 'courseForm',
+        element: <CourseForm />
       }
     ]
   },
   {
-    path:"/detailedView",
-    element:<DetailedView/>
+    path: "/detailedView",
+    element: <DetailedView />
   }
 
 ])
