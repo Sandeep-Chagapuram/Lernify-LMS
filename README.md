@@ -8,7 +8,6 @@
 - (Optional) Install `nodemon` globally to automatically restart the server on code changes:
 - MongoDB must be installed locally.
 - The MongoDB server must be running
-- For optimal display, view at 125% zoom in Chrome.
 
 ```bash
 npm install -g nodemon
@@ -40,6 +39,6 @@ cd frontend
 npm install
 npm run dev
 ```
-
+- For optimal display, view at 125% zoom in Chrome.
 ```
 ```
